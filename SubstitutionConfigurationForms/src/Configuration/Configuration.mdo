@@ -29,14 +29,6 @@
   <vendor>https://github.com/SeiOkami</vendor>
   <version>0.1.1</version>
   <interfaceCompatibilityMode>TaxiEnableVersion8_2</interfaceCompatibilityMode>
-  <languages uuid="d81a9010-9c93-4dd4-95be-2d224b0bc1e1">
-    <name>English</name>
-    <objectBelonging>Adopted</objectBelonging>
-    <extension xsi:type="mdclassExtension:LanguageExtension">
-      <languageCode>Checked</languageCode>
-    </extension>
-    <languageCode>en</languageCode>
-  </languages>
   <languages uuid="8729f236-b3d2-40f6-9ad4-cc4675763d7f" extendedConfigurationObject="db4a9ccb-9ef5-4b3c-8577-b6fe5db1b62e">
     <name>Русский</name>
     <objectBelonging>Adopted</objectBelonging>
