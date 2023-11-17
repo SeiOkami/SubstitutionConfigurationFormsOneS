@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="14458ae5-7530-40a9-8866-4f70ab085c5a">
+  <name>SCF_SubstitutionConfigurationForms</name>
+  <synonym>
+    <key>en</key>
+    <value>Substitution configuration forms</value>
+  </synonym>
+  <synonym>
+    <key>ru</key>
+    <value>Подмена форм конфигурации</value>
+  </synonym>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:SessionParameter xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="7c6a4548-d056-4bfa-a617-0a4efd648def">
+  <name>SCF_ThisSubstitution</name>
+  <synonym>
+    <key>en</key>
+    <value>This substitution (SCF)</value>
+  </synonym>
+  <synonym>
+    <key>ru</key>
+    <value>Текущая подмена формы</value>
+  </synonym>
+  <type>
+    <types>CatalogRef</types>
+  </type>
+</mdclass:SessionParameter>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:InformationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="3a1a41b8-3734-40a3-aa1e-8832cc1b5d10">
+  <producedTypes>
+    <selectionType typeId="3b670e95-c780-47a5-9093-9538c37cd380" valueTypeId="a6a91d73-5dcb-43f9-9b08-8ed111bc1149"/>
+    <listType typeId="2b1f8850-b635-45f4-afd1-7fc47b7e60f4" valueTypeId="771f99f4-75d3-40d4-8e75-cbdb950b6a34"/>
+    <managerType typeId="d4cb9bd3-7ac7-4ce3-8c78-9035d1bbca5d" valueTypeId="ee56ce07-2757-4596-82c5-439b92aba501"/>
+    <recordSetType typeId="5fe37a88-6ab3-4768-8010-7a00228bcf48" valueTypeId="761e84fb-ed2e-4058-b826-5554cc3bbff2"/>
+    <recordKeyType typeId="b5c94733-bf22-49ed-a0b6-1f5dba50a2ed" valueTypeId="9174a2fc-7bcb-4b60-bae5-4b092c6c4f60"/>
+    <recordType typeId="47be74b1-2612-49eb-ac94-f9a1175dfc7f" valueTypeId="6da86d6b-c159-48ef-a291-4e334e121fb7"/>
+    <recordManagerType typeId="96591ab1-795d-456f-9441-9d499a4118d6" valueTypeId="c1b6e5da-7c26-4d71-8986-91af13940581"/>
+  </producedTypes>
+  <name>SCF_SubstitutionConfigurationForms</name>
+  <synonym>
+    <key>en</key>
+    <value>Substitution configuration forms</value>
+  </synonym>
+  <synonym>
+    <key>ru</key>
+    <value>Подмена форм конфигурации</value>
+  </synonym>
+  <dataHistory>Use</dataHistory>
+  <editType>InDialog</editType>
+  <defaultRecordForm>InformationRegister.SCF_SubstitutionConfigurationForms.Form.RecordForm</defaultRecordForm>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <recordPresentation>
+    <key>en</key>
+    <value>Substitution configuration form</value>
+  </recordPresentation>
+  <recordPresentation>
+    <key>ru</key>
+    <value>Подмена формы конфигурации</value>
+  </recordPresentation>
+  <resources uuid="0ea8e388-5135-4b09-8779-62ecf7b782de">
+    <name>Substitution</name>
+    <synonym>
+      <key>en</key>
+      <value>Substitution</value>
+    </synonym>
+    <synonym>
+      <key>ru</key>
+      <value>Подмена</value>
+    </synonym>
+    <type>
+      <types>CatalogRef</types>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
+  <dimensions uuid="ef9f57ce-b3f8-4e9e-b537-e9fe32bc1349">
+    <name>FullNameForm</name>
+    <synonym>
+      <key>en</key>
+      <value>Full name form</value>
+    </synonym>
+    <synonym>
+      <key>ru</key>
+      <value>Полное имя формы</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>500</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fillChecking>ShowError</fillChecking>
+    <denyIncompleteValues>true</denyIncompleteValues>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+    <mainFilter>true</mainFilter>
+  </dimensions>
+  <forms uuid="510d8f62-637b-4637-992f-8d132acb16bd">
+    <name>RecordForm</name>
+    <synonym>
+      <key>en</key>
+      <value>Record form</value>
+    </synonym>
+    <synonym>
+      <key>ru</key>
+      <value>Форма записи</value>
+    </synonym>
+    <usePurposes>PersonalComputer</usePurposes>
+    <usePurposes>MobileDevice</usePurposes>
+  </forms>
+</mdclass:InformationRegister>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:EventSubscription xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="22e35884-92e5-4577-bb67-b249223e378b">
+  <name>SCF_FormGetProcessing</name>
+  <synonym>
+    <key>en</key>
+    <value>Form Get Processing (SCF)</value>
+  </synonym>
+  <synonym>
+    <key>ru</key>
+    <value>Обработка Получения Формы</value>
+  </synonym>
+  <source>
+    <types>CatalogManager</types>
+    <types>DocumentManager</types>
+    <types>EnumManager</types>
+    <types>ChartOfCharacteristicTypesManager</types>
+    <types>ChartOfAccountsManager</types>
+    <types>ChartOfCalculationTypesManager</types>
+    <types>ReportManager</types>
+    <types>DataProcessorManager</types>
+    <types>BusinessProcessManager</types>
+    <types>TaskManager</types>
+    <types>ExchangePlanManager</types>
+    <types>DocumentJournalManager</types>
+    <types>InformationRegisterManager</types>
+    <types>AccumulationRegisterManager</types>
+    <types>AccountingRegisterManager</types>
+    <types>CalculationRegisterManager</types>
+    <types>FilterCriterionManager</types>
+  </source>
+  <event>FormGetProcessing</event>
+  <handler>CommonModule.SCF_SubstitutionConfigurationForms.FormGetProcessingFormGetProcessing</handler>
+</mdclass:EventSubscription>

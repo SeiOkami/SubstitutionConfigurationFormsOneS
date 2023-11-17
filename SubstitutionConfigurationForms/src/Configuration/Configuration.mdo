@@ -2,8 +2,12 @@
 <mdclass:Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="01874c85-bd71-443a-adec-3e1893916872">
   <name>SubstitutionConfigurationForms</name>
   <synonym>
-    <key>ru</key>
+    <key>en</key>
     <value>Substitution configuration forms</value>
+  </synonym>
+  <synonym>
+    <key>ru</key>
+    <value>Подмена форм конфигурации</value>
   </synonym>
   <objectBelonging>Adopted</objectBelonging>
   <extension xsi:type="mdclassExtension:ConfigurationExtension">
@@ -22,6 +26,8 @@
   <configurationExtensionCompatibilityMode>8.3.21</configurationExtensionCompatibilityMode>
   <configurationExtensionPurpose>Customization</configurationExtensionPurpose>
   <defaultRunMode>ManagedApplication</defaultRunMode>
+  <vendor>https://github.com/SeiOkami</vendor>
+  <version>0.1.1</version>
   <interfaceCompatibilityMode>TaxiEnableVersion8_2</interfaceCompatibilityMode>
   <languages uuid="d81a9010-9c93-4dd4-95be-2d224b0bc1e1">
     <name>English</name>
@@ -40,4 +46,9 @@
     </extension>
     <languageCode>ru</languageCode>
   </languages>
+  <sessionParameters>SessionParameter.SCF_ThisSubstitution</sessionParameters>
+  <commonModules>CommonModule.SCF_SubstitutionConfigurationForms</commonModules>
+  <eventSubscriptions>EventSubscription.SCF_FormGetProcessing</eventSubscriptions>
+  <commonForms>CommonForm.SCF_SubstitutionConfigurationForm</commonForms>
+  <informationRegisters>InformationRegister.SCF_SubstitutionConfigurationForms</informationRegisters>
 </mdclass:Configuration>
