@@ -7,6 +7,8 @@ Procedure FormGetProcessingFormGetProcessing(
 
 	SetPrivilegedMode(True);
 	
+	ClearThisSubstitution();
+	
 	MetadataSource = Metadata.FindByType(TypeOf(Source));
 	If MetadataSource = Undefined Then
 		Return;
@@ -19,8 +21,18 @@ Procedure FormGetProcessingFormGetProcessing(
 	EndIf;
 	
 	StandardProcessing = False;
-	SessionParameters.SCF_ThisSubstitution = SubstitutionObject;
 	SelectedForm = "CommonForm.SCF_SubstitutionConfigurationForm";
+	
+	ObjectName = AttachSubstitution(SubstitutionObject);
+
+	//@skip-check property-return-type, dynamic-access-method-not-found, statement-type-change - Error EDT
+	FormForOpen = ExternalDataProcessors.Create(ObjectName).Metadata().DefaultForm.FullName(); //String
+	
+	ThisSubstitution = NewThisSubstitution();
+	ThisSubstitution.Ref = SubstitutionObject;
+	ThisSubstitution.SubstitutionFormPath = FormForOpen;
+	ThisSubstitution.SourceFormPath = FullNameForm;
+	SetThisSubstitution(ThisSubstitution);
 	
 EndProcedure
 
@@ -53,7 +65,14 @@ Function SubstitutionObject(FullNameForm) Export
 
 EndFunction
 
-// See AdditionalReportsAndDataProcessors.AttachExternalDataProcessor
+
+// Attach substitution.
+// 
+// Parameters:
+//  Ref - CatalogRef
+// 
+// Returns:
+//  String
 Function AttachSubstitution(Ref) Export
 	
 	Names = AdditionalDataProcessorsNames();
@@ -84,6 +103,79 @@ Function AdditionalDataProcessorsNames() Export
 	Raise "Additional data processors not found!";
 
 EndFunction
+
+// Clear this substitution.
+Procedure ClearThisSubstitution() Export
+	
+	SetThisSubstitution();
+	
+EndProcedure
+
+// Set this substitution.
+// 
+// Parameters:
+//  Parameters - see NewThisSubstitution
+// 
+Procedure SetThisSubstitution(Val Parameters = Undefined) Export
+	
+	If Parameters = Undefined Then
+		Parameters = NewThisSubstitution();
+	EndIf;
+	
+	SessionParameters.SCF_ThisSubstitution = new FixedStructure(Parameters);
+	
+EndProcedure
+
+// New this substitution.
+// 
+// Returns:
+//  Structure:
+// * Ref - Undefined, CatalogRef -
+// * SubstitutionFormPath - String
+// * SourceFormPath - String
+Function NewThisSubstitution() Export
+	
+	Result = new Structure();
+	Result.Insert("Ref", Undefined);
+	Result.Insert("SubstitutionFormPath", "");
+	Result.Insert("SourceFormPath", "");
+	
+	Return Result;
+	
+EndFunction
+
+// This substitution.
+// 
+// Returns:
+//  See NewThisSubstitution
+Function ThisSubstitution() Export
+	
+	SetPrivilegedMode(True);
+	
+	Try
+		Result = SessionParameterThisSubstitution();
+	Except
+		ClearThisSubstitution();
+		Result = SessionParameterThisSubstitution();
+	EndTry;
+	
+	//@skip-check constructor-function-return-section - Баг ЕДТ
+	Return Result; //See NewThisSubstitution
+	
+EndFunction
+
+// Substitute source form name.
+// 
+// Parameters:
+//  FormPath - String
+Procedure SubstituteSourceFormName(FormPath) Export
+	
+	Substitution = ThisSubstitution();
+	If Upper(FormPath) = Upper(Substitution.SubstitutionFormPath) Then
+		FormPath = Substitution.SourceFormPath;
+	EndIf;
+	
+EndProcedure
 
 #EndRegion
 
@@ -137,6 +229,12 @@ Function NewSslObjectName(ObjectName, MethodName)
 	Result.Insert("MethodName", MethodName);
 	
 	Return Result;
+	
+EndFunction
+
+Function SessionParameterThisSubstitution()
+	
+	Return SessionParameters.SCF_ThisSubstitution;
 	
 EndFunction
 

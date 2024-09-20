@@ -6,12 +6,7 @@
 Procedure OnCreateAtServer(Cancel, StandardProcessing)
 	
 	ParamsForOpen = StructureFromFormDataStructure(Parameters);
-	
-	Substitution = SessionParameters.SCF_ThisSubstitution; //CatalogRef.AdditionalReportsAndDataProcessors
-	ObjectName = SCF_SubstitutionConfigurationForms.AttachSubstitution(Substitution);
-
-	//@skip-check property-return-type, dynamic-access-method-not-found, statement-type-change - Error EDT
-	FormForOpen = ExternalDataProcessors.Create(ObjectName).Metadata().DefaultForm.FullName(); //String
+	FormForOpen = SCF_SubstitutionConfigurationForms.ThisSubstitution().SubstitutionFormPath;
 	
 EndProcedure
 
