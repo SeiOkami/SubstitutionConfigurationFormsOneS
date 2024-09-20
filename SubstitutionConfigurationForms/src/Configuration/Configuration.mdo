@@ -38,6 +38,7 @@
     <languageCode>en</languageCode>
   </languages>
   <sessionParameters>SessionParameter.SCF_ThisSubstitution</sessionParameters>
+  <commonModules>CommonModule.Common</commonModules>
   <commonModules>CommonModule.SCF_SubstitutionConfigurationForms</commonModules>
   <eventSubscriptions>EventSubscription.SCF_FormGetProcessing</eventSubscriptions>
   <commonForms>CommonForm.SCF_SubstitutionConfigurationForm</commonForms>
