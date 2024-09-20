@@ -40,6 +40,7 @@
   </languages>
   <sessionParameters>SessionParameter.SCF_ThisSubstitution</sessionParameters>
   <commonModules>CommonModule.SCF_SubstitutionConfigurationForms</commonModules>
+  <commonModules>CommonModule.ОбщегоНазначения</commonModules>
   <eventSubscriptions>EventSubscription.SCF_FormGetProcessing</eventSubscriptions>
   <commonForms>CommonForm.SCF_SubstitutionConfigurationForm</commonForms>
   <informationRegisters>InformationRegister.SCF_SubstitutionConfigurationForms</informationRegisters>
