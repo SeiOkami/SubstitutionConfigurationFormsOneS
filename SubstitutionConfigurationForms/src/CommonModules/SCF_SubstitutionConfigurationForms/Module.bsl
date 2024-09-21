@@ -15,22 +15,24 @@ Procedure FormGetProcessingFormGetProcessing(
 	EndIf;
 	
 	FullNameForm = StrTemplate("%1.%2", MetadataSource.FullName(), FormType);
-	SubstitutionObject = SubstitutionObject(FullNameForm);
-	If SubstitutionObject = Undefined Then
+	Substitution = SubstitutionObject(FullNameForm);
+	If Substitution.Ref = Undefined Then
 		Return;
 	EndIf;
 	
 	StandardProcessing = False;
 	SelectedForm = "CommonForm.SCF_SubstitutionConfigurationForm";
 	
-	ObjectName = AttachSubstitution(SubstitutionObject);
+	ObjectName = AttachSubstitution(Substitution.Ref);
+	ExternalMetadata = ExternalDataProcessors.Create(ObjectName).Metadata();
+	FormForOpen = MetadataObjectForm(ExternalMetadata, Substitution.FormName);
+	If FormForOpen = Undefined Then
+		Raise NStr("ru = 'Не удалось получить подменяющую форму!'; en = 'Failed to get a substitute form!'");
+	EndIf;
 
-	//@skip-check property-return-type, dynamic-access-method-not-found, statement-type-change - Error EDT
-	FormForOpen = ExternalDataProcessors.Create(ObjectName).Metadata().DefaultForm.FullName(); //String
-	
 	ThisSubstitution = NewThisSubstitution();
-	ThisSubstitution.Ref = SubstitutionObject;
-	ThisSubstitution.SubstitutionFormPath = FormForOpen;
+	ThisSubstitution.Ref = Substitution.Ref;
+	ThisSubstitution.SubstitutionFormPath = FormForOpen.FullName();
 	ThisSubstitution.SourceFormPath = FullNameForm;
 	SetThisSubstitution(ThisSubstitution);
 	
@@ -42,29 +44,35 @@ EndProcedure
 //  FullNameForm - String
 // 
 // Returns:
-//  CatalogRef
+//  Structure:
+//  * Ref - Undefined, CatalogRef -
+//  * FormName - String
 Function SubstitutionObject(FullNameForm) Export
+
+	Result = New Structure();
+	Result.Insert("Ref", Undefined);
+	Result.Insert("FormName", "");
 
 	Query = New Query;
 	Query.SetParameter("FullNameForm", FullNameForm);
 	Query.Text = 
 	"SELECT
-	|	Substitutions.Substitution
+	|	Substitutions.Substitution AS Ref,
+	|	Substitutions.FormName
 	|FROM
 	|	InformationRegister.SCF_SubstitutionConfigurationForms AS Substitutions
 	|WHERE
 	|	Substitutions.FullNameForm = &FullNameForm";
 	ResultQuery = Query.Execute();
-	If ResultQuery.IsEmpty() Then
-		Return Undefined;
-	Else
+	If Not ResultQuery.IsEmpty() Then
 		Select = ResultQuery.Select();
 		Select.Next();
-		Return Select[0];
+		FillPropertyValues(Result, Select);
 	EndIf;
+	
+	Return Result;
 
 EndFunction
-
 
 // Attach substitution.
 // 
@@ -229,6 +237,20 @@ Function NewSslObjectName(ObjectName, MethodName)
 	Result.Insert("MethodName", MethodName);
 	
 	Return Result;
+	
+EndFunction
+
+Function MetadataObjectForm(MetadataObject, FormName = "")
+	
+	If IsBlankString(FormName) Then
+		//@skip-check property-return-type, dynamic-access-method-not-found, statement-type-change - Error EDT
+		FormForOpen = MetadataObject.DefaultForm; //MetadataObject
+	Else
+		//@skip-check property-return-type, dynamic-access-method-not-found, statement-type-change - Error EDT
+		FormForOpen = MetadataObject.Forms.Find(FormName); //MetadataObject
+	EndIf;
+	
+	Return FormForOpen;
 	
 EndFunction
 
