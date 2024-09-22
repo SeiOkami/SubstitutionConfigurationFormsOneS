@@ -50,15 +50,37 @@
     <dataHistory>Use</dataHistory>
     <fillValue xsi:type="core:UndefinedValue"/>
   </resources>
+  <resources uuid="7ee38deb-65d1-4e22-8b43-eb2908a665b8">
+    <name>FormName</name>
+    <synonym>
+      <key>en</key>
+      <value>Form opened name</value>
+    </synonym>
+    <synonym>
+      <key>ru</key>
+      <value>Имя открываемой формы</value>
+    </synonym>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>150</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <dataHistory>Use</dataHistory>
+    <fillValue xsi:type="core:UndefinedValue"/>
+  </resources>
   <dimensions uuid="ef9f57ce-b3f8-4e9e-b537-e9fe32bc1349">
     <name>FullNameForm</name>
     <synonym>
       <key>en</key>
-      <value>Full name form</value>
+      <value>Full name substituted form</value>
     </synonym>
     <synonym>
       <key>ru</key>
-      <value>Полное имя формы</value>
+      <value>Полное имя подменяемой формы</value>
     </synonym>
     <type>
       <types>String</types>
